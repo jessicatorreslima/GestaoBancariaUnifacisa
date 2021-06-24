@@ -1,0 +1,4 @@
+JPA
+H2
+Spring Boot Web
+Lombok
