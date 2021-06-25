@@ -16,26 +16,26 @@ public class Conta {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idConta;
 	
-	@ManyToOne
+	/*@ManyToOne
 	@JoinColumn(nullable = false, name = "idPessoa")
-	private Pessoa idPessoa;
+	private Pessoa idPessoa;*/
 	
+	private int idPessoa;
 	private BigDecimal saldo;
 	private BigDecimal limiteSaqueDiario;
 	private boolean flagAtivo;
 	private TipoConta tipoConta;
-	private LocalDate dataCriacao;
-	
+	private LocalDate dataCriacao = LocalDate.now();
 	public int getIdConta() {
 		return idConta;
 	}
 	public void setIdConta(int idConta) {
 		this.idConta = idConta;
 	}
-	public Pessoa getIdPessoa() {
+	public int getIdPessoa() {
 		return idPessoa;
 	}
-	public void setIdPessoa(Pessoa idPessoa) {
+	public void setIdPessoa(int idPessoa) {
 		this.idPessoa = idPessoa;
 	}
 	public BigDecimal getSaldo() {
@@ -65,7 +65,5 @@ public class Conta {
 	public LocalDate getDataCriacao() {
 		return dataCriacao;
 	}
-	public void setDataCriacao(LocalDate dataCriacao) {
-		this.dataCriacao = dataCriacao;
-	}
+
 }
