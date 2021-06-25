@@ -1,7 +1,0 @@
-Spring Web
-Spring Boot DevTools
-JPA
-H2
-Spring Boot Web
-Lombok
-iso 8601
