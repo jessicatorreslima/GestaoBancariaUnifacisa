@@ -14,21 +14,22 @@ import javax.persistence.Id;
 public class Pessoa {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long idPessoa;
+	private int idPessoa;
 	
 	@Column(nullable = false)
 	private String nome;
 	
-	@Column(nullable = false, unique = true)
+	@Column(nullable = false, unique = true, length = 11)
 	private String cpf;
 	
+	@Column(nullable = false)
 	private LocalDate dataNascimento;
 
-	public Long getIdPessoa() {
+	public int getIdPessoa() {
 		return idPessoa;
 	}
 
-	public void setIdPessoa(Long idPessoa) {
+	public void setIdPessoa(int idPessoa) {
 		this.idPessoa = idPessoa;
 	}
 

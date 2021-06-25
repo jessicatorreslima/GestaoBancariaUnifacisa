@@ -1,5 +1,6 @@
 package com.unifacisa.banco.model;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 
 import javax.persistence.Entity;
@@ -13,22 +14,22 @@ import javax.persistence.ManyToOne;
 public class Conta {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long idConta;
+	private int idConta;
 	
 	@ManyToOne
-	@JoinColumn(name="idPessoa")
+	@JoinColumn(nullable = false, name = "idPessoa")
 	private Pessoa idPessoa;
 	
-	private double saldo;
-	private double limiteSaqueDiario;
+	private BigDecimal saldo;
+	private BigDecimal limiteSaqueDiario;
 	private boolean flagAtivo;
 	private TipoConta tipoConta;
 	private LocalDate dataCriacao;
 	
-	public Long getIdConta() {
+	public int getIdConta() {
 		return idConta;
 	}
-	public void setIdConta(Long idConta) {
+	public void setIdConta(int idConta) {
 		this.idConta = idConta;
 	}
 	public Pessoa getIdPessoa() {
@@ -37,16 +38,16 @@ public class Conta {
 	public void setIdPessoa(Pessoa idPessoa) {
 		this.idPessoa = idPessoa;
 	}
-	public double getSaldo() {
+	public BigDecimal getSaldo() {
 		return saldo;
 	}
-	public void setSaldo(double saldo) {
+	public void setSaldo(BigDecimal saldo) {
 		this.saldo = saldo;
 	}
-	public double getLimiteSaqueDiario() {
+	public BigDecimal getLimiteSaqueDiario() {
 		return limiteSaqueDiario;
 	}
-	public void setLimiteSaqueDiario(double limiteSaqueDiario) {
+	public void setLimiteSaqueDiario(BigDecimal limiteSaqueDiario) {
 		this.limiteSaqueDiario = limiteSaqueDiario;
 	}
 	public boolean isFlagAtivo() {
