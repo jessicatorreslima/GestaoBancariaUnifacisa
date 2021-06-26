@@ -4,12 +4,9 @@ import java.math.BigDecimal;
 import java.util.List;
 import java.util.Optional;
 
-import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -55,9 +52,19 @@ public class ContaController {
 	public BigDecimal consultarSaldo(@PathVariable int idConta) {
 		return contaRepository.findSaldoById(idConta);
 	}
-	//TODO
+	
 	@PutMapping("/bloqueio/{idConta}")
-	public Conta bloquear(@PathVariable int idConta) {
+	public int bloquear(@PathVariable int idConta) {
 		return contaRepository.bloqueiaById(idConta);
+	}
+	
+	//TODO
+	@PutMapping("/deposito/{idConta}")
+	public int depositaById(@PathVariable int idConta) {
+		return contaRepository.bloqueiaById(idConta);
+	}
+	
+	public ContaController() {
+		// TODO Auto-generated constructor stub
 	}
 }

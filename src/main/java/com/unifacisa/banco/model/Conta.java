@@ -3,7 +3,6 @@ package com.unifacisa.banco.model;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -29,7 +28,8 @@ public class Conta {
 	private BigDecimal saldo = new BigDecimal(0.00);
 	private BigDecimal limiteSaqueDiario;
 	private boolean flagAtivo;
-	private TipoConta tipoConta;
+	//private TipoConta tipoConta;
+	private int tipoConta;
 	
 	@CreationTimestamp
 	private LocalDate dataCriacao;
@@ -40,7 +40,6 @@ public class Conta {
 	public void setIdConta(int idConta) {
 		this.idConta = idConta;
 	}
-
 	public BigDecimal getSaldo() {
 		return saldo;
 	}
@@ -59,13 +58,29 @@ public class Conta {
 	public void setFlagAtivo(boolean flagAtivo) {
 		this.flagAtivo = flagAtivo;
 	}
-	public TipoConta getTipoConta() {
+	public int getTipoConta() {
 		return tipoConta;
 	}
-	public void setTipoConta(TipoConta tipoConta) {
+	public void setTipoConta(int tipoConta) {
 		this.tipoConta = tipoConta;
 	}
 	public LocalDate getDataCriacao() {
 		return dataCriacao;
 	}
+	Conta() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	Conta(int idConta, Pessoa idPessoa, BigDecimal saldo, BigDecimal limiteSaqueDiario, boolean flagAtivo,
+			int tipoConta, LocalDate dataCriacao) {
+		super();
+		this.idConta = idConta;
+		this.idPessoa = idPessoa;
+		this.saldo = saldo;
+		this.limiteSaqueDiario = limiteSaqueDiario;
+		this.flagAtivo = flagAtivo;
+		this.tipoConta = tipoConta;
+		this.dataCriacao = dataCriacao;
+	}
+	
 }
