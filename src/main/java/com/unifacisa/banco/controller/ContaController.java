@@ -4,7 +4,10 @@ import java.math.BigDecimal;
 import java.util.List;
 import java.util.Optional;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,10 +20,8 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.unifacisa.banco.model.Conta;
-import com.unifacisa.banco.model.Pessoa;
 import com.unifacisa.banco.repository.ContaRepository;
 
-import ch.qos.logback.core.net.SyslogOutputStream;
 
 @RestController
 @RequestMapping("/contas")
@@ -35,7 +36,7 @@ public class ContaController {
 	}
 	
 	@GetMapping("/{idConta}")
-	public Conta consultar(@PathVariable int idConta) {
+	public Optional<Conta> consultar(@PathVariable int idConta) {
 		return contaRepository.findById(idConta);
 	}
 	
@@ -54,5 +55,9 @@ public class ContaController {
 	public BigDecimal consultarSaldo(@PathVariable int idConta) {
 		return contaRepository.findSaldoById(idConta);
 	}
-
+	//TODO
+	@PutMapping("/bloqueio/{idConta}")
+	public Conta bloquear(@PathVariable int idConta) {
+		return contaRepository.bloqueiaById(idConta);
+	}
 }

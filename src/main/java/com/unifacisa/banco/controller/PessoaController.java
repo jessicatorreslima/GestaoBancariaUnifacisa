@@ -28,6 +28,11 @@ public class PessoaController {
 		return pessoaRepository.findAll();
 	}
 	
+	@GetMapping("/{idPessoa}")
+	public Optional<Pessoa> consultar(@PathVariable int idPessoa) {
+		return pessoaRepository.findById(idPessoa);
+	}
+	
 	@PostMapping
 	@ResponseStatus
 	public Pessoa adicionar(@RequestBody Pessoa pessoa) {
