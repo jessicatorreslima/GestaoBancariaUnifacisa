@@ -9,18 +9,20 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
 @Entity
+@Table(name="TB_CONTA")
 public class Conta {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idConta;
 	
-	/*@ManyToOne
-	@JoinColumn(nullable = false, name = "idPessoa")
-	private Pessoa idPessoa;*/
+	@ManyToOne
+	@JoinColumn(/*nullable = false,*/ name = "idPessoa")
+	private Pessoa idPessoa;
 	
-	private int idPessoa;
+	//private int idPessoa;
 	private BigDecimal saldo;
 	private BigDecimal limiteSaqueDiario;
 	private boolean flagAtivo;
@@ -32,12 +34,7 @@ public class Conta {
 	public void setIdConta(int idConta) {
 		this.idConta = idConta;
 	}
-	public int getIdPessoa() {
-		return idPessoa;
-	}
-	public void setIdPessoa(int idPessoa) {
-		this.idPessoa = idPessoa;
-	}
+
 	public BigDecimal getSaldo() {
 		return saldo;
 	}
