@@ -4,6 +4,7 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 
 import javax.persistence.Entity;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -26,8 +27,10 @@ public class Conta {
 	private BigDecimal saldo;
 	private BigDecimal limiteSaqueDiario;
 	private boolean flagAtivo;
+	
+	@Enumerated
 	private TipoConta tipoConta;
-	private LocalDate dataCriacao = LocalDate.now();
+	private static LocalDate dataCriacao = LocalDate.now();
 	public int getIdConta() {
 		return idConta;
 	}
