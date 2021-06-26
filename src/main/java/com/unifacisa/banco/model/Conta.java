@@ -3,14 +3,16 @@ package com.unifacisa.banco.model;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.CreationTimestamp;
 
 @Entity
 @Table(name="TB_CONTA")
@@ -24,13 +26,14 @@ public class Conta {
 	private Pessoa idPessoa;
 	
 	//private int idPessoa;
-	private BigDecimal saldo;
+	private BigDecimal saldo = new BigDecimal(0.00);
 	private BigDecimal limiteSaqueDiario;
 	private boolean flagAtivo;
-	
-	@Enumerated
 	private TipoConta tipoConta;
-	private static LocalDate dataCriacao = LocalDate.now();
+	
+	@CreationTimestamp
+	private LocalDate dataCriacao;
+	
 	public int getIdConta() {
 		return idConta;
 	}
@@ -65,5 +68,4 @@ public class Conta {
 	public LocalDate getDataCriacao() {
 		return dataCriacao;
 	}
-
 }
