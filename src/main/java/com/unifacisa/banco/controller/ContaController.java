@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.unifacisa.banco.model.Conta;
 import com.unifacisa.banco.model.Transacao;
 import com.unifacisa.banco.repository.ContaRepository;
+import com.unifacisa.banco.repository.TransacaoRepository;
 
 
 @RestController
@@ -28,6 +29,9 @@ public class ContaController {
 	
 	@Autowired
 	private ContaRepository contaRepository;
+	
+	@Autowired
+	private TransacaoRepository transacaoRepository;
 	
 	@GetMapping
 	public List<Conta> listar() {
@@ -74,6 +78,8 @@ public class ContaController {
 		if (conta.getSaldo().subtract(valor).compareTo(new BigDecimal("0")) >= 0)
 		{
 			novoSaldo = conta.getSaldo().subtract(valor);
+			Transacao transacao = new Transacao(conta,valor);
+			transacaoRepository.save(transacao);
 		} 
 		return contaRepository.changeBalanceById(idConta,novoSaldo);
 	}

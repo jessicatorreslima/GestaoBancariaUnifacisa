@@ -4,6 +4,7 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -22,11 +23,11 @@ public class Conta {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idConta;
 	
-	@ManyToOne//(cascade=CascadeType.PERSIST)
+	/*@ManyToOne(cascade=CascadeType.ALL)
 	@JoinColumn
-	private Pessoa idPessoa;
+	private Pessoa idPessoa;*/
 	
-	//private int idPessoa;
+	private int idPessoa;
 	private BigDecimal saldo = new BigDecimal(0.00);
 	private BigDecimal limiteSaqueDiario;
 	private boolean flagAtivo;
@@ -45,10 +46,10 @@ public class Conta {
 	public void setIdConta(int idConta) {
 		this.idConta = idConta;
 	}
-	public Pessoa getIdPessoa() {
+	public int getIdPessoa() {
 		return idPessoa;
 	}
-	public void setIdPessoa(Pessoa idPessoa) {
+	public void setIdPessoa(int idPessoa) {
 		this.idPessoa = idPessoa;
 	}
 	public BigDecimal getSaldo() {
@@ -88,7 +89,7 @@ public class Conta {
 	public Conta() {
 		super();
 	}
-	public Conta(int idConta, Pessoa idPessoa, BigDecimal saldo, BigDecimal limiteSaqueDiario, boolean flagAtivo,
+	public Conta(int idConta, int idPessoa, BigDecimal saldo, BigDecimal limiteSaqueDiario, boolean flagAtivo,
 			int tipoConta, LocalDate dataCriacao, List<Transacao> extrato) {
 		super();
 		this.idConta = idConta;
