@@ -1,7 +1,5 @@
 package com.unifacisa.banco.controller;
 
-
-import java.math.BigDecimal;
 import java.util.List;
 import java.util.Optional;
 
@@ -18,6 +16,10 @@ import org.springframework.web.bind.annotation.RestController;
 import com.unifacisa.banco.model.Transacao;
 import com.unifacisa.banco.repository.TransacaoRepository;
 
+/**
+ * @author <a href="malito:jtlimapro@gmail.com">Jéssica Torres de Lima</a>
+ *
+ */
 @RestController
 @RequestMapping("/transacoes")
 public class TransacaoController {
@@ -25,21 +27,36 @@ public class TransacaoController {
 	@Autowired
 	private TransacaoRepository transacaoRepository;
 	
+	/**
+	 * Lista todas as transacoes.
+	 * Método: GET
+	 * Path: /transacoes
+	 * @return	uma lista de <code>Transacao</code>
+	 */
 	@GetMapping
 	public List<Transacao> listar() {
 		return transacaoRepository.findAll();
 	}
 	
+	/**
+	 * Busca uma transação pelo idTransacao.
+	 * Método: GET
+	 * Path: /transacoes/1
+	 * @return	a transação que possui o idTransacao informado, caso exista
+	 */
 	@GetMapping("/{idTransacao}")
 	public Optional<Transacao> consultar(@PathVariable int idTransacao) {
 		return transacaoRepository.findById(idTransacao);
 	}
-	
-	@GetMapping("/valor/{idConta}")
-	public BigDecimal consulta(@PathVariable int idConta) {
-		return transacaoRepository.findValorById(idConta);
-	}
 		
+	/**
+	 * Cadastra uma nova transação.
+	 * Método: POST
+	 * Path: /transacoes
+	 * Para ser utilizado apenas por <code>sacar</code> e <code>depositar</code> de <code>ContaController</code>
+	 * @param	transacao
+	 * @return	a transacao criada
+	 */
 	@PostMapping
 	@ResponseStatus(HttpStatus.CREATED)
 	public Transacao adicionar(@RequestBody Transacao transacao) {

@@ -3,6 +3,7 @@ package com.unifacisa.banco.model;
 import java.math.BigDecimal;
 import java.time.*;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -13,6 +14,10 @@ import javax.persistence.Table;
 
 import org.hibernate.annotations.CreationTimestamp;
 
+/**
+ * @author <a href="malito:jtlimapro@gmail.com">Jéssica Torres de Lima</a>
+ *
+ */
 @Entity
 @Table(name="TB_TRANSACAO")
 public class Transacao {
@@ -27,6 +32,7 @@ public class Transacao {
 	@CreationTimestamp
 	private LocalDateTime dataTransacao;
 	
+	@Column(nullable = false)
 	private BigDecimal valor;
 
 	public int getIdTransacao() {
@@ -61,6 +67,12 @@ public class Transacao {
 		
 	}
 	
+	/**
+	 * Construtor utilizado na <code>ContaController</code>
+	 * 
+	 * @param conta
+	 * @param valor
+	*/
 	public Transacao(Conta conta, BigDecimal valor) {
 		super();
 		this.conta = conta;

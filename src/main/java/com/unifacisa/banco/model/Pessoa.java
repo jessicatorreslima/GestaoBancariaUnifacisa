@@ -9,7 +9,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-
+/**
+ * @author <a href="malito:jtlimapro@gmail.com">Jéssica Torres de Lima</a>
+ *
+ */
 @Entity
 @Table(name="TB_PESSOA")
 public class Pessoa {

@@ -4,6 +4,7 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -13,6 +14,10 @@ import javax.persistence.Table;
 
 import org.hibernate.annotations.CreationTimestamp;
 
+/**
+ * @author <a href="malito:jtlimapro@gmail.com">Jéssica Torres de Lima</a>
+ *
+ */
 @Entity
 @Table(name="TB_CONTA")
 public class Conta {
@@ -35,6 +40,7 @@ public class Conta {
 	//private TipoConta tipoConta;
 	private int tipoConta;
 	
+	@Column(updatable = false)
 	@CreationTimestamp
 	private LocalDate dataCriacao;
 	
