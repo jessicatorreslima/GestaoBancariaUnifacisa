@@ -86,6 +86,11 @@ public class ContaController {
 		return contaRepository.changeBalanceById(idConta,novoSaldo);
 	}
 	
+	@GetMapping("/extrato/{idConta}")
+	public List<Transacao> listarFiltrado(@PathVariable int idConta) {
+		return transacaoRepository.findByConta(contaRepository.findById(idConta));
+	}
+	
 	public ContaController() {
 		// TODO Auto-generated constructor stub
 	}
