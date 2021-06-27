@@ -30,6 +30,6 @@ public interface ContaRepository extends JpaRepository<Conta, Integer>{
 	@Transactional
 	@Query
 	("UPDATE Conta c SET c.saldo =?2 WHERE c.idConta = ?1")
-	int depositaById(@Param("idConta") int idConta, BigDecimal saldo);
+	int changeBalanceById(@Param("idConta") int idConta, BigDecimal saldo);
 
 }

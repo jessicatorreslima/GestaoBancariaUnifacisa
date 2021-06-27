@@ -14,5 +14,4 @@ public enum TipoConta {
 	public int getValor() {
 		return valor;
 	}
-	
 }

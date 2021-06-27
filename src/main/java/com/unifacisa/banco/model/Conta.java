@@ -2,6 +2,7 @@ package com.unifacisa.banco.model;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -9,6 +10,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.CreationTimestamp;
@@ -34,11 +36,20 @@ public class Conta {
 	@CreationTimestamp
 	private LocalDate dataCriacao;
 	
+	@OneToMany
+    private List<Transacao> Extrato;
+	
 	public int getIdConta() {
 		return idConta;
 	}
 	public void setIdConta(int idConta) {
 		this.idConta = idConta;
+	}
+	public Pessoa getIdPessoa() {
+		return idPessoa;
+	}
+	public void setIdPessoa(Pessoa idPessoa) {
+		this.idPessoa = idPessoa;
 	}
 	public BigDecimal getSaldo() {
 		return saldo;
@@ -66,11 +77,17 @@ public class Conta {
 	}
 	public LocalDate getDataCriacao() {
 		return dataCriacao;
+	}	
+	public List<Transacao> getExtrato() {
+		return Extrato;
 	}
+	public void setExtrato(List<Transacao> extrato) {
+		Extrato = extrato;
+	}
+	
 	Conta() {
 		super();
-		// TODO Auto-generated constructor stub
-	}
+	}	
 	Conta(int idConta, Pessoa idPessoa, BigDecimal saldo, BigDecimal limiteSaqueDiario, boolean flagAtivo,
 			int tipoConta, LocalDate dataCriacao) {
 		super();

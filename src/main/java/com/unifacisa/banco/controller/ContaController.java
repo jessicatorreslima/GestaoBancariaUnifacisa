@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -58,10 +59,35 @@ public class ContaController {
 		return contaRepository.bloqueiaById(idConta);
 	}
 	
-	//TODO
-	@PutMapping("/deposito/{idConta}")
-	public int depositaById(@PathVariable int idConta) {
-		return contaRepository.bloqueiaById(idConta);
+	@PutMapping("/deposito")
+	public int depositar(@RequestParam int idConta, @RequestParam BigDecimal valor) {
+		Conta conta = contaRepository.findById(idConta).get();
+		BigDecimal novoSaldo = conta.getSaldo().add(valor);
+		return contaRepository.changeBalanceById(idConta,novoSaldo);
+	}
+	
+	/*@PutMapping("/deposito")
+	public int depositar(@RequestParam int idConta, @RequestParam BigDecimal valor) {
+		Conta conta = contaRepository.findById(idConta).get();
+		BigDecimal novoSaldo = conta.getSaldo().add(valor);
+		return contaRepository.depositaById(idConta,novoSaldo);
+	}
+	@PutMapping("/deposito/{idConta}/{valor}")
+	public int depositar(@PathVariable int idConta, @PathVariable BigDecimal valor) {
+		Conta conta = contaRepository.findById(idConta).get();
+		BigDecimal novoSaldo = conta.getSaldo().add(valor);
+		return contaRepository.depositaById(idConta,novoSaldo);
+	}*/
+	
+	@PutMapping("/saque")
+	public int sacar(@RequestParam int idConta, @RequestParam BigDecimal valor) {
+		Conta conta = contaRepository.findById(idConta).get();
+		BigDecimal novoSaldo = conta.getSaldo();
+		if (conta.getSaldo().subtract(valor).compareTo(new BigDecimal("0")) >= 0)
+		{
+			novoSaldo = conta.getSaldo().subtract(valor);
+		} 
+		return contaRepository.changeBalanceById(idConta,novoSaldo);
 	}
 	
 	public ContaController() {
