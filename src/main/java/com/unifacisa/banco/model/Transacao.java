@@ -57,9 +57,9 @@ public class Transacao {
 		return dataTransacao;
 	}
 	
-	public void setLocalDateTime () {
+	/*public void setLocalDateTime () {
 		this.dataTransacao = LocalDateTime.now();
-	}
+	}*/
 	
 	public Transacao(){
 		

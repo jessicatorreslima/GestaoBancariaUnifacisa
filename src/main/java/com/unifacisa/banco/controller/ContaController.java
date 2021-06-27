@@ -68,6 +68,8 @@ public class ContaController {
 	public int depositar(@RequestParam int idConta, @RequestParam BigDecimal valor) {
 		Conta conta = contaRepository.findById(idConta).get();
 		BigDecimal novoSaldo = conta.getSaldo().add(valor);
+		Transacao transacao = new Transacao(conta,valor);
+		transacaoRepository.save(transacao);
 		return contaRepository.changeBalanceById(idConta,novoSaldo);
 	}	
 		
@@ -78,7 +80,7 @@ public class ContaController {
 		if (conta.getSaldo().subtract(valor).compareTo(new BigDecimal("0")) >= 0)
 		{
 			novoSaldo = conta.getSaldo().subtract(valor);
-			Transacao transacao = new Transacao(conta,valor);
+			Transacao transacao = new Transacao(conta,valor.negate());
 			transacaoRepository.save(transacao);
 		} 
 		return contaRepository.changeBalanceById(idConta,novoSaldo);
