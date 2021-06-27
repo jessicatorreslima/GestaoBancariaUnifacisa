@@ -1,7 +1,6 @@
 package com.unifacisa.banco.model;
 
 import java.time.LocalDate;
-import java.util.Objects;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -62,30 +61,12 @@ public class Pessoa {
 	public Pessoa() {
 		
 	}
+	
 	public Pessoa(int idPessoa, String nome, String cpf, LocalDate dataNascimento) {
 		super();
 		this.idPessoa = idPessoa;
 		this.nome = nome;
 		this.cpf = cpf;
 		this.dataNascimento = dataNascimento;
-	}
-
-	@Override
-	public int hashCode() {
-		return Objects.hash(idPessoa);
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Pessoa other = (Pessoa) obj;
-		return Objects.equals(idPessoa, other.idPessoa);
-	}
-	
-	
+	}	
 }

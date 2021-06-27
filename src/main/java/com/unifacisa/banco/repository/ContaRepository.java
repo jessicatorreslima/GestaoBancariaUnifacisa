@@ -1,8 +1,6 @@
 package com.unifacisa.banco.repository;
 
 import java.math.BigDecimal;
-import java.util.List;
-import java.util.Optional;
 
 import javax.transaction.Transactional;
 
@@ -13,13 +11,10 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import com.unifacisa.banco.model.Conta;
-import com.unifacisa.banco.model.Transacao;
 
 @Repository
 public interface ContaRepository extends JpaRepository<Conta, Integer>{
 
-//	List<Transacao> findByConta(Optional<Conta> conta);
-	
 	@Query("SELECT saldo FROM Conta WHERE idConta = ?1") 
     BigDecimal findSaldoById(Integer idConta);
 

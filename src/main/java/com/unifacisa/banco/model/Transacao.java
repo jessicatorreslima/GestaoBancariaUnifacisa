@@ -57,24 +57,21 @@ public class Transacao {
 		return dataTransacao;
 	}
 	
-	/*public void setLocalDateTime () {
-		this.dataTransacao = LocalDateTime.now();
-	}*/
-	
 	public Transacao(){
 		
 	}
+	
 	public Transacao(Conta conta, BigDecimal valor) {
 		super();
 		this.conta = conta;
 		this.valor = valor;
 	}
+	
 	public Transacao(int idTransacao, Conta conta, LocalDateTime dataTransacao, BigDecimal valor) {
 		super();
 		this.idTransacao = idTransacao;
 		this.conta = conta;
 		this.dataTransacao = dataTransacao;
 		this.valor = valor;
-	}
-	
+	}	
 }

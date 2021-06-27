@@ -1,8 +1,6 @@
 package com.unifacisa.banco.controller;
 
 import java.math.BigDecimal;
-import java.sql.Date;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
@@ -10,7 +8,6 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
-import org.springframework.format.annotation.DateTimeFormat.ISO;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -26,9 +23,6 @@ import com.unifacisa.banco.model.Conta;
 import com.unifacisa.banco.model.Transacao;
 import com.unifacisa.banco.repository.ContaRepository;
 import com.unifacisa.banco.repository.TransacaoRepository;
-
-import jdk.jfr.Timestamp;
-
 
 @RestController
 @RequestMapping("/contas")
