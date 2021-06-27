@@ -11,7 +11,10 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import com.unifacisa.banco.model.Conta;
-
+/**
+ * @author <a href="malito:jtlimapro@gmail.com">Jéssica Torres de Lima</a>
+ *
+ */
 @Repository
 public interface ContaRepository extends JpaRepository<Conta, Integer>{
 

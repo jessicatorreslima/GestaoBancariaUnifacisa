@@ -10,7 +10,10 @@ import org.springframework.data.jpa.repository.Query;
 
 import com.unifacisa.banco.model.Conta;
 import com.unifacisa.banco.model.Transacao;
-
+/**
+ * @author <a href="malito:jtlimapro@gmail.com">Jéssica Torres de Lima</a>
+ *
+ */
 public interface TransacaoRepository extends JpaRepository<Transacao, Integer>{
 
 	@Query("SELECT valor FROM Transacao WHERE idConta = ?1") 

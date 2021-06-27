@@ -28,9 +28,9 @@ public class TransacaoController {
 	private TransacaoRepository transacaoRepository;
 	
 	/**
-	 * Lista todas as transacoes.
-	 * Método: GET
-	 * Path: /transacoes
+	 * Lista todas as transacoes.<br>
+	 * Método: GET<br>
+	 * Path: /transacoes<br>
 	 * @return	uma lista de <code>Transacao</code>
 	 */
 	@GetMapping
@@ -39,9 +39,9 @@ public class TransacaoController {
 	}
 	
 	/**
-	 * Busca uma transação pelo idTransacao.
-	 * Método: GET
-	 * Path: /transacoes/1
+	 * Busca uma transação pelo idTransacao.<br>
+	 * Método: GET<br>
+	 * Path: /transacoes/1<br>
 	 * @return	a transação que possui o idTransacao informado, caso exista
 	 */
 	@GetMapping("/{idTransacao}")
@@ -50,11 +50,11 @@ public class TransacaoController {
 	}
 		
 	/**
-	 * Cadastra uma nova transação.
-	 * Método: POST
-	 * Path: /transacoes
+	 * Cadastra uma nova transação.<br>
+	 * Método: POST<br>
+	 * Path: /transacoes<br>
 	 * Para ser utilizado apenas por <code>sacar</code> e <code>depositar</code> de <code>ContaController</code>
-	 * @param	transacao
+	 * @param	transacao objeto Transacao a ser criada
 	 * @return	a transacao criada
 	 */
 	@PostMapping

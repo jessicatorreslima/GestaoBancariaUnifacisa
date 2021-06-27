@@ -28,9 +28,9 @@ public class PessoaController {
 	private PessoaRepository pessoaRepository;
 	
 	/**
-	 * Lista todas as pessoas cadastradas.
-	 * Método: GET
-	 * Path: /pessoas
+	 * Lista todas as pessoas cadastradas.<br>
+	 * Método: GET<br>
+	 * Path: /pessoas<br>
 	 * @return	uma lista de <code>Pessoa</code>
 	 */
 	@GetMapping
@@ -39,11 +39,11 @@ public class PessoaController {
 	}
 	
 	/**
-	 * Busca uma pessoa pelo idPessoa.
-	 * Método: GET
-	 * Exemplo do path: /pessoas/1
+	 * Busca uma pessoa pelo idPessoa.<br>
+	 * Método: GET<br>
+	 * Exemplo do path: /pessoas/1<br>
 	 * 
-	 * @param	idPessoa
+	 * @param	idPessoa da pessoa a ser buscada
 	 * @return	a pessoa que possui o idPessoa informado, caso exista
 	 */
 	@GetMapping("/{idPessoa}")
@@ -52,16 +52,16 @@ public class PessoaController {
 	}
 	
 	/**
-	 * Cadastra uma nova pessoa.
-	 * Método: POST
-	 * Path: /pessoas
-	 * Exemplo do JSON:
-	 * {
-	 *	"nome" : "José Maria da Silva",
-	 *	"cpf" : "12345678910",
-	 *	"dataNascimento" : "1991-12-31"
-	 * }
-	 * @param	conta
+	 * Cadastra uma nova pessoa.<br>
+	 * Método: POST<br>
+	 * Path: /pessoas<br>
+	 * Exemplo do JSON:<br>
+	 * {<br>
+	 *	"nome" : "José Maria da Silva",<br>
+	 *	"cpf" : "12345678910",<br>
+	 *	"dataNascimento" : "1991-12-31"<br>
+	 * }<br>
+	 * @param	conta objeto Conta a ser criada
 	 * @return	a conta criada
 	 */
 	@PostMapping
@@ -71,12 +71,12 @@ public class PessoaController {
 	}
 	
 	/**
-	 * Exclui uma pessoa.
-	 * Método: DELETE
-	 * Exemplo do path: /pessoas/1
+	 * Exclui uma pessoa.<br>
+	 * Método: DELETE<br>
+	 * Exemplo do path: /pessoas/1<br>
 	 * 
-	 * @param	idPessoa
-	 * @return	a pessoa que foi excluida
+	 * @param	idPessoa a ser excluída
+	 * @return	dados da pessoa que foi excluida
 	 */
 	@DeleteMapping("/{idPessoa}")
 	public Pessoa excluir (@PathVariable int idPessoa) {
