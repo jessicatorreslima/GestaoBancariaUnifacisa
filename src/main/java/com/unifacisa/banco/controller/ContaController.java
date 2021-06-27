@@ -1,11 +1,16 @@
 package com.unifacisa.banco.controller;
 
 import java.math.BigDecimal;
+import java.sql.Date;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.format.annotation.DateTimeFormat.ISO;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -21,6 +26,8 @@ import com.unifacisa.banco.model.Conta;
 import com.unifacisa.banco.model.Transacao;
 import com.unifacisa.banco.repository.ContaRepository;
 import com.unifacisa.banco.repository.TransacaoRepository;
+
+import jdk.jfr.Timestamp;
 
 
 @RestController
@@ -87,10 +94,16 @@ public class ContaController {
 	}
 	
 	@GetMapping("/extrato/{idConta}")
-	public List<Transacao> listarFiltrado(@PathVariable int idConta) {
+	public List<Transacao> consultarExtrato(@PathVariable int idConta) {
 		return transacaoRepository.findByConta(contaRepository.findById(idConta));
 	}
 	
+	@GetMapping("/extrato/periodo")
+	public List<Transacao> consultarExtratoPorPeriodo(@RequestParam int idConta, 
+			@RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime dataInicial, 
+			@RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime dataFinal) {
+		return transacaoRepository.findByContaAndDataTransacaoGreaterThanAndDataTransacaoLessThan(contaRepository.findById(idConta), dataInicial, dataFinal);
+	}
 	public ContaController() {
 		// TODO Auto-generated constructor stub
 	}

@@ -54,5 +54,9 @@ public class TransacaoController {
 	public Transacao adicionar(@RequestBody Transacao transacao) {
 		return transacaoRepository.save(transacao);
 	}
+	
+	public TransacaoController() {
+		// TODO Auto-generated constructor stub
+	}
 
 }

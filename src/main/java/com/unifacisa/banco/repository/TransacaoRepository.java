@@ -1,6 +1,9 @@
 package com.unifacisa.banco.repository;
 
 import java.math.BigDecimal;
+import java.sql.Date;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -16,5 +19,7 @@ public interface TransacaoRepository extends JpaRepository<Transacao, Integer>{
     BigDecimal findValorById(Integer idConta);
 
 	List<Transacao> findByConta(Optional<Conta> conta);
+	
+	List<Transacao> findByContaAndDataTransacaoGreaterThanAndDataTransacaoLessThan(Optional<Conta> conta, LocalDateTime dataInicial, LocalDateTime dataFinal);
 	
 }
