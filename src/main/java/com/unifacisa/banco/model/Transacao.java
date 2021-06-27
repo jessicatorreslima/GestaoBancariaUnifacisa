@@ -57,10 +57,18 @@ public class Transacao {
 		return dataTransacao;
 	}
 	
-	Transacao(){
+	public Transacao(){
 		
 	}
-	Transacao(int idTransacao, Conta conta, LocalDateTime dataTransacao, BigDecimal valor) {
+	public Transacao(Conta conta, BigDecimal valor) {
+		super();
+		this.conta = conta;
+		this.valor = valor;
+	}
+	public Transacao(int idTransacao, 
+			Conta conta, 
+			LocalDateTime dataTransacao, 
+			BigDecimal valor) {
 		super();
 		this.idTransacao = idTransacao;
 		this.conta = conta;

@@ -22,8 +22,8 @@ public class Conta {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idConta;
 	
-	@ManyToOne
-	@JoinColumn(/*nullable = false,*/ name = "idPessoa")
+	@ManyToOne//(cascade=CascadeType.PERSIST)
+	@JoinColumn
 	private Pessoa idPessoa;
 	
 	//private int idPessoa;
@@ -81,15 +81,15 @@ public class Conta {
 	public List<Transacao> getExtrato() {
 		return Extrato;
 	}
-	public void setExtrato(List<Transacao> extrato) {
-		Extrato = extrato;
-	}
+	public void addTransacao(Transacao transacao) {
+		Extrato.add(transacao);
+    }
 	
-	Conta() {
+	public Conta() {
 		super();
-	}	
-	Conta(int idConta, Pessoa idPessoa, BigDecimal saldo, BigDecimal limiteSaqueDiario, boolean flagAtivo,
-			int tipoConta, LocalDate dataCriacao) {
+	}
+	public Conta(int idConta, Pessoa idPessoa, BigDecimal saldo, BigDecimal limiteSaqueDiario, boolean flagAtivo,
+			int tipoConta, LocalDate dataCriacao, List<Transacao> extrato) {
 		super();
 		this.idConta = idConta;
 		this.idPessoa = idPessoa;
@@ -98,6 +98,8 @@ public class Conta {
 		this.flagAtivo = flagAtivo;
 		this.tipoConta = tipoConta;
 		this.dataCriacao = dataCriacao;
-	}
+		Extrato = extrato;
+	}	
+	
 	
 }

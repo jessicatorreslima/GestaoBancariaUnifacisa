@@ -59,6 +59,17 @@ public class Pessoa {
 		this.dataNascimento = dataNascimento;
 	}
 
+	public Pessoa() {
+		
+	}
+	public Pessoa(int idPessoa, String nome, String cpf, LocalDate dataNascimento) {
+		super();
+		this.idPessoa = idPessoa;
+		this.nome = nome;
+		this.cpf = cpf;
+		this.dataNascimento = dataNascimento;
+	}
+
 	@Override
 	public int hashCode() {
 		return Objects.hash(idPessoa);

@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.unifacisa.banco.model.Conta;
+import com.unifacisa.banco.model.Transacao;
 import com.unifacisa.banco.repository.ContaRepository;
 
 
@@ -64,21 +65,8 @@ public class ContaController {
 		Conta conta = contaRepository.findById(idConta).get();
 		BigDecimal novoSaldo = conta.getSaldo().add(valor);
 		return contaRepository.changeBalanceById(idConta,novoSaldo);
-	}
-	
-	/*@PutMapping("/deposito")
-	public int depositar(@RequestParam int idConta, @RequestParam BigDecimal valor) {
-		Conta conta = contaRepository.findById(idConta).get();
-		BigDecimal novoSaldo = conta.getSaldo().add(valor);
-		return contaRepository.depositaById(idConta,novoSaldo);
-	}
-	@PutMapping("/deposito/{idConta}/{valor}")
-	public int depositar(@PathVariable int idConta, @PathVariable BigDecimal valor) {
-		Conta conta = contaRepository.findById(idConta).get();
-		BigDecimal novoSaldo = conta.getSaldo().add(valor);
-		return contaRepository.depositaById(idConta,novoSaldo);
-	}*/
-	
+	}	
+		
 	@PutMapping("/saque")
 	public int sacar(@RequestParam int idConta, @RequestParam BigDecimal valor) {
 		Conta conta = contaRepository.findById(idConta).get();
