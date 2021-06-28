@@ -1,1 +1,1 @@
-packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"com.unifacisa.banco.model"}];updateSearchResults();
+packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"com.unifacisa.banco"},{"l":"com.unifacisa.banco.controller"},{"l":"com.unifacisa.banco.model"},{"l":"com.unifacisa.banco.repository"}];updateSearchResults();
